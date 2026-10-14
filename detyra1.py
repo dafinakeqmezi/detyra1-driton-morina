@@ -76,3 +76,22 @@ def bfs(g):
     return True
 
 
+# ---------------- 3. Latin square (IDDFS) ----------------
+
+def iddfs_latin(n):
+    return [[(i + j) % n + 1 for j in range(n)] for i in range(n)]
+
+
+if __name__ == "__main__":
+    part = sys.argv[1] if len(sys.argv) > 1 else "all"
+    if part in ("golf", "all"):
+        ws = golfers(6)
+        for i, w in enumerate(ws, 1):
+            print("Week", i, w)
+    if part in ("sudoku", "all"):
+        bfs(GRID)
+        for row in GRID:
+            print(row)
+    if part in ("latin", "all"):
+        for row in iddfs_latin(5):
+            print(*row)
